@@ -1,0 +1,57 @@
+%fatos e regras
+impedir(dobby,harry).
+%dobby deseja impedir que harry volte a hogwarts.
+salvar(dobby,harry) :- impedir(dobby,harry).
+% se dobby quer impedir que harry volte a hogwarts,então dobby quer salvá-lo de algum perigo
+castigado(harry,tios):-impedir(dobby,harry).
+% harry foi castigado pelos tios por dobby ter tentado impedir harry de
+% ir para hogwarts, ao jogar bolo nas visita
+familiaweasley(gina).
+familiaweasley(rony).
+familiaweasley(molly).
+familiaweasley(arthur).
+familiaweasley(fred).
+familiaweasley(jorge).
+familiaweasley(percy).
+comprarmaterial(harry,X):-comprarmaterial(X,becodiagonal),familiaweasley(X).
+%harry foi comprar o material escolar no beco diagonal com gina e a família weasley.
+colocar(lucio,diario,X):-familiaweasley(X),X=:=gina.
+%lucio colocou o diário de voldemort no caldeirão da gina.
+escrever(diario,X):- colocar(lucio,diario,X).
+%gina começou a escrever seus sentimentos no diário
+influenciar(diario,gina):-escrever(gina,diario).
+%e foi influenciada ,pela essência de voldemort presa ao diário, a cometer ataques contra alunos nascidos trouxas na escola de hogwarts.
+%o principal foco era os nascidos trouxas, mas eles não foram os únicos a serem atacados
+sangueruim(justino).
+% justino é denominado sangue ruim, pois, ou um de seus pais ou ambos não são bruxos.
+sangueruim(colin).
+sangueruim(hermione).
+sangueruim(murta-que-geme).
+monstro(basilisco).
+monstro(aranha).
+temivel(basilisco):-monstro(aranha).
+%existem dois tipos de monstros que são suspeitos de serem o monstro dentro da câmara secreta.
+%Mas o monstro da câmara secreta é um mostro que as aranhas temem.
+petrificado(X,Y):-sangueruim(X),temivel(Y).
+%todos os alunos sangue ruim foram petrificados por um monstro que é temido por outros monstros
+prepararpocao(hermione,harry,rony).
+acharculpado(malfoy):-prepararpocao(hermione,harry,rony).
+levada(gina,camara).
+salvar(harry,gina):-levada(gina,camara).
+local(banheiro).
+local(salacomunal).
+local(masmorra).
+entrada(X):-local(X),assombrar(murtaquegeme).%ajeitar
+falar(harrry,ofidioglossia).
+falar(voldemort,ofidioglossia).
+casa(harry,grifinoria).
+casa(voldemort,sonserina).
+casa(malfoy,sonserina).
+entrarcamara(harry,X,Y):-falar(harry,X),entrada(Y). %ajeitar
+abrir(X,camara):-influenciar(diario,X).%ajeitar
+resgatar(X,Y):-entrarcamara(X,W,Z),abrir(Y,camara). %ajeitar
+herdeiro(X):-falar(X,ofidioglossia),casa(X,sonserina).
+
+
+
+
